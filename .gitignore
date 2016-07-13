@@ -1,0 +1,17 @@
+#dev tool cache
+__pycache__/
+.idea/
+
+
+#log
+*.log
+
+
+
+#sqlite file
+app.db
+
+
+#OS generated file
+.DS_Store*
+Thumbs.db
