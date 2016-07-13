@@ -1,0 +1,124 @@
+{% extends"base.html" %}
+
+{% block body %}
+{% block topmenu %}
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">스마트 볼라드 관리 시스템</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                {% if session.islogin  %}
+                    <!--
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
+                    <ul class="dropdown-menu alert-dropdown">
+                        <li>
+                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">View All</a>
+                        </li>
+                    </ul>
+                </li>
+                -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>{{ session.memberid }}<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i>{{ session.name }}</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#" id="buttonLogout"><i class="fa fa-fw fa-power-off"></i>로그아웃</a>
+                        </li>
+                    </ul>
+                </li>
+                {% endif %}
+            </ul>
+            {% block sidemenu %}
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li>
+                        <a href="{{ url_for('bollard.viewMain') }}"><i class="fa fa-fw fa-dashboard"></i> 볼라드 관리</a>
+                        <ul id="sub" class="collapse" style="display:block">
+                            <li>
+                                <a href="{{ url_for('bollard.viewBeacon') }}"><i class="fa fa-fw fa-camera"></i>비콘</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('bollard.viewRegion') }}"><i class="fa fa-fw fa-area-chart"></i>지역</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('bollard.viewList') }}"><i class="fa fa-fw fa-edit"></i>볼라드</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('statistics.viewMain') }}"><i class="fa fa-fw fa-bar-chart-o"></i> 통계</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('voc.viewMain') }}"><i class="fa fa-fw fa-table"></i> VOC이력</a>
+                    </li>
+
+                </ul>
+            </div>
+            {% endblock %}
+            <!-- /.navbar-collapse -->
+        </nav>
+        {% endblock %}
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+            {% block content %}
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Blank Page
+                            <small>Subheading</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-file"></i> Blank Page
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+                {% endblock %}
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+{% endblock %}
